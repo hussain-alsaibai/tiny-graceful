@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiny-graceful"
+version = "0.1.0"
+description = "Zero-dependency graceful shutdown: signal handling, reverse-order hooks, and bounded drains for threaded and asyncio services."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [{name = "OpenClaw", email = "hussain.alsaibai@gmail.com"}]
+keywords = [
+    "graceful-shutdown",
+    "sigterm",
+    "signal-handling",
+    "drain",
+    "lifecycle",
+    "asyncio",
+    "threading",
+    "zero-dependency",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Shutdown",
+]
+
+[project.urls]
+Homepage = "https://github.com/hussain-alsaibai/tiny-graceful"
+Repository = "https://github.com/hussain-alsaibai/tiny-graceful"
+Issues = "https://github.com/hussain-alsaibai/tiny-graceful/issues"
+
+[tool.setuptools]
+py-modules = ["tiny_graceful"]
