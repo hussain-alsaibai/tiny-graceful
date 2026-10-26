@@ -10,6 +10,17 @@ import asyncio
 import os
 import signal
 import sys
+
+# Python 3.8/3.9 do not expose sys.stdlib_module_names (added in 3.10).
+# Top-level stdlib modules the package is allowed to import.
+_STDLIB_FALLBACK = {
+    "abc", "argparse", "asyncio", "base64", "collections", "contextlib",
+    "copy", "dataclasses", "datetime", "enum", "functools", "hashlib",
+    "inspect", "io", "itertools", "json", "logging", "os", "pathlib",
+    "queue", "random", "re", "signal", "socket", "string", "subprocess",
+    "sys", "tempfile", "textwrap", "threading", "time", "traceback", "types",
+    "typing", "uuid", "warnings", "weakref", "__future__",
+}
 import threading
 import time
 
@@ -593,7 +604,12 @@ class TestModule:
         import ast
         import pathlib
 
-        stdlib = set(sys.stdlib_module_names)
+        # sys.stdlib_module_names only exists on Python 3.10+; the package
+        # itself supports 3.8+, so fall back to a known-stdlib list there.
+        if hasattr(sys, "stdlib_module_names"):
+            stdlib = set(sys.stdlib_module_names)
+        else:
+            stdlib = _STDLIB_FALLBACK
         source = pathlib.Path(__file__).with_name("tiny_graceful.py")
         tree = ast.parse(source.read_text())
         imported = set()
