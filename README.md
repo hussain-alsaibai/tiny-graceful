@@ -4,7 +4,8 @@
 > Signal handling, reverse-order cleanup hooks, and bounded drains — one file, stdlib only.
 
 ```bash
-pip install tiny-graceful
+# From GitHub (recommended -- not yet on PyPI)
+pip install git+https://github.com/hussain-alsaibai/tiny-graceful.git
 # or: copy tiny_graceful.py into your project (MIT licensed)
 ```
 
